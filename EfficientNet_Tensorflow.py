@@ -8,26 +8,6 @@ import math
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
-BASE_WEIGHTS_PATH = 'https://storage.googleapis.com/keras-applications/'
-
-WEIGHTS_HASHES = {
-    'b0': ('902e53a9f72be733fc0bcb005b3ebbac',
-           '50bc09e76180e00e4465e1a485ddc09d'),
-    'b1': ('1d254153d4ab51201f1646940f018540',
-           '74c4e6b3e1f6a1eea24c589628592432'),
-    'b2': ('b15cce36ff4dcbd00b6dd88e7857a6ad',
-           '111f8e2ac8aa800a7a99e3239f7bfb39'),
-    'b3': ('ffd1fdc53d0ce67064dc6a9c7960ede0',
-           'af6d107764bb5b1abb91932881670226'),
-    'b4': ('18c95ad55216b8f92d7e70b3a046e2fc',
-           'ebc24e6d6c33eaebbd558eafbeedf1ba'),
-    'b5': ('ace28f2a6363774853a83a0b21b9421a',
-           '38879255a25d3c92d5e44e04ae6cec6f'),
-    'b6': ('165f6e37dce68623721b423839de8be5',
-           '9ecce42647a20130c1f39a5d4cb75743'),
-    'b7': ('8c03f828fec3ef71311cd463b6759d99',
-           'cbcfe4450ddf6f3ad90b1b398090fe4a'),
-}
 
 DEFAULT_BLOCKS_ARGS = [{
     'kernel_size': 3,
@@ -40,7 +20,7 @@ DEFAULT_BLOCKS_ARGS = [{
     'se_ratio': 0.25
 }, {
     'kernel_size': 3,
-    'repeats': 1,
+    'repeats': 2,
     'filters_in': 16,
     'filters_out': 24,
     'expand_ratio': 6,
@@ -58,7 +38,7 @@ DEFAULT_BLOCKS_ARGS = [{
     'se_ratio': 0.25
 }, {
     'kernel_size': 3,
-    'repeats': 2,
+    'repeats': 3,
     'filters_in': 40,
     'filters_out': 80,
     'expand_ratio': 6,
@@ -67,7 +47,7 @@ DEFAULT_BLOCKS_ARGS = [{
     'se_ratio': 0.25
 }, {
     'kernel_size': 5,
-    'repeats': 2,
+    'repeats': 3,
     'filters_in': 80,
     'filters_out': 112,
     'expand_ratio': 6,
@@ -76,7 +56,7 @@ DEFAULT_BLOCKS_ARGS = [{
     'se_ratio': 0.25
 }, {
     'kernel_size': 5,
-    'repeats': 1,
+    'repeats': 4,
     'filters_in': 112,
     'filters_out': 192,
     'expand_ratio': 6,
@@ -93,7 +73,6 @@ DEFAULT_BLOCKS_ARGS = [{
     'strides': 1,
     'se_ratio': 0.25
 }]
-
 
 CONV_KERNEL_INITIALIZER = {
     'class_name': 'VarianceScaling',
