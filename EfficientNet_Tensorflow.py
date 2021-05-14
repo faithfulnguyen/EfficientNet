@@ -292,7 +292,7 @@ def EfficientNetB7(images, bottleneck_layer_size, dropout_rate, phase_train):
 
 def EfficientNetBXXX_TestGit(images, bottleneck_layer_size, dropout_rate, phase_train):
     net = EfficientNet(
-        images, phase_train, width_coefficient=3, depth_coefficient=4.1
+        images, phase_train, width_coefficient=4, depth_coefficient=4.4
     )
     net = tf.reduce_mean(net, axis=[1, 2], keepdims=False)
     net = slim.dropout(net, keep_prob=1.0 - dropout_rate, is_training=phase_train, scope='dropout_fn')
