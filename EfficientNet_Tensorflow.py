@@ -290,6 +290,17 @@ def EfficientNetB7(images, bottleneck_layer_size, dropout_rate, phase_train):
     return net
 
 
+def EfficientNetBXXX_TestGit(images, bottleneck_layer_size, dropout_rate, phase_train):
+    net = EfficientNet(
+        images, phase_train, width_coefficient=3, depth_coefficient=4.1
+    )
+    net = tf.reduce_mean(net, axis=[1, 2], keepdims=False)
+    net = slim.dropout(net, keep_prob=1.0 - dropout_rate, is_training=phase_train, scope='dropout_fn')
+    net = slim.fully_connected(net, bottleneck_layer_size, activation_fn=None, scope='Bottleneck',
+                               reuse=False)
+    return net
+
+
 import numpy as np
 def test():
     batch_size_placeholder = tf.placeholder(tf.int32, name='batch_size')
