@@ -310,8 +310,7 @@ def EfficientNetBXXX_TestGit_Branch(images, bottleneck_layer_size, dropout_rate,
     net = slim.fully_connected(net, bottleneck_layer_size, activation_fn=None, scope='Bottleneck',
                                reuse=False)
     return net
-
-
+#add transformer replace for SE_block
 import numpy as np
 def test():
     batch_size_placeholder = tf.placeholder(tf.int32, name='batch_size')
